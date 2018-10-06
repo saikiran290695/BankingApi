@@ -1,0 +1,87 @@
+{
+    "Scenarios": [
+        {
+            "Scenario-1": {
+                "case": "Block Debit Card",
+                "Conversation": [
+                    {
+                        "QUERY": "i want to block my credit card"
+                    },
+                    {
+                        "bot": "could you provide me your last 4 digits of debit card",
+                        "QUERY": "4545"
+                    },
+                    {
+                        "bot": "could you provide me your date of birth",
+                        "QUERY": "29-06-1995"
+                    },
+                    {
+                        "bot": "could you provide you mother's maiden name",
+                        "QUERY": "john"
+                    }
+                ],
+                "URL": "https://gentle-caverns-27745.herokuapp.com/icici/blockDcard?last4={{last4}}&dob={{dob}}&mothermaiden={{mothermaiden}}",
+                "InputParams": {
+                    "last4": "4545",
+                    "dob": "29-06-1995",
+                    "mothermaiden": "john"
+                },
+                "Output": "Debit status changed to Active / InActive"
+            },
+            "Scenario-2": {
+                "case": "Download Invoice",
+                "Conversation": [
+                    {
+                        "QUERY": "i need the invoice of my recent purchase"
+                    },
+                    {
+                        "bot": "could you provide me the product number you need invoice for",
+                        "QUERY": "12345678"
+                    }
+                ],
+                "URL": "https://gentle-caverns-27745.herokuapp.com/invoice?productno={productno}",
+                "InputParams": {
+                    "productno": "12345678"
+                },
+                "Output": "none",
+                "NOTE": "URL itself is a downloadable link",
+                "USECASE": "this scenario should be taken in 2 stages : 1,handover 2,bot resolving issue"
+            },
+            "Scenario-3": {
+                "case": "stop a cheque",
+                "Conversation": [
+                    {
+                        "QUERY": "how do i stop a cheque"
+                    },
+                    {
+                        "bot": "could you provide me the cheque number you are willing to stop",
+                        "QUERY": "7777"
+                    },
+                    {
+                        "bot": "would you like me to stop the cheque?",
+                        "QUERY": "yes/no"
+                    },
+                    {
+                        "condition": [
+                            {
+                                "yes": {
+                                    "URL": "https://gentle-caverns-27745.herokuapp.com/:chequeNo/blockcheque",
+                                    "InputParams": {
+                                        "chequeNo": "7777"
+                                    },
+                                    "Output": "Cheque status changed to Active/InActive"
+                                },
+                                "no": {
+                                    "URL": "https://gentle-caverns-27745.herokuapp.com/chequeblockFAQ",
+                                    "InputParams": {},
+                                    "Output": "FAQ's",
+                                    "NOTE": "response would be string detailing the manual process of blocking a cheque"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
