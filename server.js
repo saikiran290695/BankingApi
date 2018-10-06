@@ -40,6 +40,8 @@ app.get('/chequeblockFAQ', (req, response) => {
     response.send(status);
 });
 
-var server = app.listen(80, function () {
+const port = process.env.PORT || 80;
+
+var server = app.listen(port, function () {
     console.log('Listening on port %d', server.address().port);
 });
