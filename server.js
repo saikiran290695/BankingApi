@@ -10,7 +10,8 @@ let bankingdata = {
     dob: "29-06-1995",
     mothermaidename:"john",
     debitcardIsAcitve: true,
-    chequeIsActive : true
+    chequeIsActive : true,
+    modelnumber: 12345678
 }
 
 app.use(function (req, res, next) {
@@ -37,6 +38,17 @@ app.get('/chequeblockFAQ', (req, response) => {
     };
     response.send(status);
 });
+
+app.get('/invoice', (req, response) => {
+    if(req.param("productno") == bankingdata.modelnumber){
+    var file = __dirname + '/sampleInvoice.txt';
+    response.download(file);
+    }
+    else{
+        response.send("invalid model number");
+    }
+});
+
 
 app.get('/icici/blockDcard', (req, response) => {
     var last4digits = req.param("last4");
