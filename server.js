@@ -40,7 +40,7 @@ app.get('/chequeblockFAQ', (req, response) => {
 
 app.get('/icici/blockDcard', (req, response) => {
     var last4digits = req.param("last4");
-    var dob = reqq.param("dob");
+    var dob = req.param("dob");
     var mmaiden = req.param("mothermaiden");
     if(bankingdata.last4 == last4digits &&
         bankingdata.dob == dob &&
