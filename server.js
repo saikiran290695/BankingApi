@@ -44,7 +44,7 @@ app.get('/icici/blockDcard', (req, response) => {
     var mmaiden = req.param("mothermaiden");
     if(bankingdata.last4 == last4digits &&
         bankingdata.dob == dob &&
-        bankingdata.mmaiden == mmaiden)
+        bankingdata.mothermaidename == mmaiden)
         {
             bankingdata.debitcardIsAcitve = bankingdata.debitcardIsAcitve ? false : true;
         }
