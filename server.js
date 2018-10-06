@@ -8,7 +8,7 @@ let bankingdata = {
     acc: "3322441155",
     chequeno: "7777",
     dob: "29-06-1995",
-    mothermaidename:"shetty",
+    mothermaidename:"john",
     debitcardIsAcitve: true,
     chequeIsActive : true
 }
