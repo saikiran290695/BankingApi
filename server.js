@@ -3,12 +3,14 @@ var app = express();
 
 // Enable CORS
 let bankingdata = {
+    last4 : "4545",
     emailid: "banker@gmail.com",
     acc: "3322441155",
     chequeno: "7777",
-    dob: "29-06-1995",
+    dob: "29/06/1995",
     mothermaidename:"maiden",
-    isacitve: true
+    debitcardIsAcitve: true,
+    chequeIsActive : true
 }
 
 app.use(function (req, res, next) {
@@ -19,16 +21,12 @@ app.use(function (req, res, next) {
 
 // Get all the intents from recast
 app.get('/:chequeNo/blockcheque', (req, response) => {
-    // var last4debitcardno = req.param("last4");
-    // var mmaiden = req.param("mothermaiden");
-    // var dob = req.param("dob");
-    if (bankingdata.chequeno = req.params.chequeNo
-    ) 
+    if (bankingdata.chequeno = req.params.chequeNo) 
     {
-        bankingdata.isacitve = bankingdata.isacitve ? false : true;
+        bankingdata.chequeIsActive = bankingdata.chequeIsActive ? false : true;
     }
     var status = {
-        "Cheque status changed to": bankingdata.isacitve ? "Active" : "InActive"
+        "Cheque status changed to": bankingdata.chequeIsActive ? "Active" : "InActive"
     };
     response.send(status);
 });
@@ -36,6 +34,29 @@ app.get('/:chequeNo/blockcheque', (req, response) => {
 app.get('/chequeblockFAQ', (req, response) => {
     var status = {
         "status": "FAQ"
+    };
+    response.send(status);
+});
+
+app.get('/icici/blockDcard', (req, response) => {
+    var last4digits = req.param("last4");
+    var dob = reqq.param("dob");
+    var mmaiden = req.param("mothermaiden");
+    if(bankingdata.last4 == last4digits &&
+        bankingdata.dob == dob &&
+        bankingdata.mmaiden == mothermaidename)
+        {
+            bankingdata.debitcardIsAcitve = bankingdata.debitcardIsAcitve ? false : true;
+        }
+        var status = {
+            "Debit status changed to": bankingdata.debitcardIsAcitve ? "Active" : "InActive"
+        };
+    response.send(status);
+});
+
+app.get('/icici/debitcardstatus', (req, response) => {
+    var status = {
+        "DebitCard status ": bankingdata.debitcardIsAcitve ? "Active" : "InActive"
     };
     response.send(status);
 });
