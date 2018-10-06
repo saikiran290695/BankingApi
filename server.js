@@ -41,7 +41,7 @@ app.get('/chequeblockFAQ', (req, response) => {
 
 app.get('/invoice', (req, response) => {
     if(req.param("productno") == bankingdata.modelnumber){
-    var file = __dirname + '/sampleInvoice.txt';
+    var file = __dirname + '/invoice.pdf';
     response.download(file);
     }
     else{
