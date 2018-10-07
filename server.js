@@ -3,12 +3,12 @@ var app = express();
 
 // Enable CORS
 let bankingdata = {
-    last4: "4545",
+    last4: "454567678989",
     emailid: "banker@gmail.com",
     acc: "3322441155",
     chequeno: "7777",
     dob: "29-06-1995",
-    mothermaidename: "john",
+    mothermaidename: ["nikita", "swathi", "preety" ],
     debitcardIsAcitve: true,
     chequeIsActive: true,
     modelnumber: 12345678
@@ -127,7 +127,7 @@ app.get('/icici/blockDcard', (req, response) => {
     var mmaiden = req.param("mothermaiden");
     if (bankingdata.last4 == last4digits &&
         bankingdata.dob == dob &&
-        bankingdata.mothermaidename == mmaiden) {
+        bankingdata.mothermaidename.lastIndexOf[mmaiden] != -1) {
         bankingdata.debitcardIsAcitve = bankingdata.debitcardIsAcitve ? false : true;
     }
     var status = {
