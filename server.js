@@ -59,7 +59,7 @@ app.get('/bookappointment', (req, res) => {
         date.setHours(value);
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
-        var status = `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`;
+        var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
         //{
             // "name": doctorname,
             // "time" : date
@@ -79,7 +79,7 @@ app.get('/bookappointment', (req, res) => {
         date.setHours(hours[Math.floor(Math.random() * hours.length)])
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
-        var status = `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`;
+        var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
         //{
             // "name": doctorname,
             // "time" : date
