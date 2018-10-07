@@ -40,6 +40,9 @@ app.use(function (req, res, next) {
 app.get('/bookappointment', (req, res) => {
     var doctor = req.param("doctor");
     var schedule = req.param("schedule");
+    console.log("data being recieved");
+        console.log(doctor);
+    console.log(schedule);
     if (schedule.length > 30) {
         var regex = /[amp]/g;
         var regexhours = /[0-9]/g;
