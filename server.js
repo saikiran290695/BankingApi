@@ -64,12 +64,12 @@ app.get('/bookappointment', (req, res) => {
         date.setHours(value);
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
-        var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
-        //{
+        var status = // `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
+        {
         // "name": doctorname,
         // "time" : date
-        // "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
-        // }
+        "appointment": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+         }
     }
     else {
         var doctorname;
@@ -84,12 +84,12 @@ app.get('/bookappointment', (req, res) => {
         date.setHours(hours[Math.floor(Math.random() * hours.length)])
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
-        var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
-        //{
+        var status = //`Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
+        {
         // "name": doctorname,
         // "time" : date
-        //"response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
-        // }
+        "appointment": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+         }
     }
     console.log(status);
     res.send(status)
@@ -151,49 +151,6 @@ app.get('/icici/debitcardstatus', (req, response) => {
     console.log(status);
     response.send(status);
 });
-
-app.get('/icici.html', (req, response) => {
-    fs.readFile(__dirname + "/icici.html", function (error, data) {
-        response.writeHead(200, {
-            'Content-Type': 'text/html'
-        });
-        response.write(data);
-        response.end();
-    });
- 
-})
-
-app.get('/practo.html', (req, response) => {
-    fs.readFile(__dirname + "/practo.html", function (error, data) {
-        if (error) {
-            response.writeHead(404);
-            response.write(error);
-            response.end();
-        } else {
-            response.writeHead(200, {
-                'Content-Type': 'text/html'
-            });
-            response.write(data);
-            response.end();
-        }
-    });
-})
-
-app.get('/snapdeal.html', (req, response) => {
-    fs.readFile(__dirname + "/snapdeal.html", function (error, data) {
-        if (error) {
-            response.writeHead(404);
-            response.write(error);
-            response.end();
-        } else {
-            response.writeHead(200, {
-                'Content-Type': 'text/html'
-            });
-            response.write(data);
-            response.end();
-        }
-    });
-})
 
 
 const port = process.env.PORT || 80;
