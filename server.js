@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var url = require('url');
+var fs = require('fs');
 
 // Enable CORS
 let bankingdata = {
@@ -8,7 +10,7 @@ let bankingdata = {
     acc: "3322441155",
     chequeno: "7777",
     dob: "29-06-1995",
-    mothermaidename: ["nikita", "swathi", "preety" ],
+    mothermaidename: ["nikita", "swathi", "preety"],
     debitcardIsAcitve: true,
     chequeIsActive: true,
     modelnumber: 12345678
@@ -17,7 +19,7 @@ let minutes = [00, 15, 30, 45]
 let hours = [8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20];
 let doctorAppointment = [
     {
-        "specialisation": "generalphysician",
+        "specialisation": "general physician",
         "name": "murthy"
     },
     {
@@ -61,10 +63,10 @@ app.get('/bookappointment', (req, res) => {
         date.setSeconds(00);
         var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
         //{
-            // "name": doctorname,
-            // "time" : date
-           // "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
-       // }
+        // "name": doctorname,
+        // "time" : date
+        // "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+        // }
     }
     else {
         var doctorname;
@@ -81,10 +83,10 @@ app.get('/bookappointment', (req, res) => {
         date.setSeconds(00);
         var status = `Your appointment is succesfully booked with doctor ${doctorname} a ${doctor} specialist. Please report to the clinic by ${date}`;
         //{
-            // "name": doctorname,
-            // "time" : date
-            //"response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
-       // }
+        // "name": doctorname,
+        // "time" : date
+        //"response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+        // }
     }
     console.log(status);
     res.send(status)
@@ -146,6 +148,50 @@ app.get('/icici/debitcardstatus', (req, response) => {
     console.log(status);
     response.send(status);
 });
+
+app.get('/icici.html', (req, response) => {
+    fs.readFile(__dirname + "/icici.html", function (error, data) {
+        response.writeHead(200, {
+            'Content-Type': 'text/html'
+        });
+        response.write(data);
+        response.end();
+    });
+ 
+})
+
+app.get('/practo.html', (req, response) => {
+    fs.readFile(__dirname + "/practo.html", function (error, data) {
+        if (error) {
+            response.writeHead(404);
+            response.write(error);
+            response.end();
+        } else {
+            response.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
+            response.write(data);
+            response.end();
+        }
+    });
+})
+
+app.get('/snapdeal.html', (req, response) => {
+    fs.readFile(__dirname + "/snapdeal.html", function (error, data) {
+        if (error) {
+            response.writeHead(404);
+            response.write(error);
+            response.end();
+        } else {
+            response.writeHead(200, {
+                'Content-Type': 'text/html'
+            });
+            response.write(data);
+            response.end();
+        }
+    });
+})
+
 
 const port = process.env.PORT || 80;
 
