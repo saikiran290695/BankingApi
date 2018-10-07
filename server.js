@@ -14,7 +14,7 @@ let bankingdata = {
     modelnumber: 12345678
 }
 let minutes = [00, 15, 30, 45]
-let hours = [8,9,10,11,12,15,16,17,18,19,20];
+let hours = [8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20];
 let doctorAppointment = [
     {
         "specialisation": "generalphysician",
@@ -60,7 +60,9 @@ app.get('/bookappointment', (req, res) => {
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
         var status = {
-            "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+            "name": doctorname,
+            "time" : date
+           // "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
         }
     }
     else {
@@ -72,12 +74,14 @@ app.get('/bookappointment', (req, res) => {
         })
         datecurrent = new Date(Date.now()).getDate();
         projectiondate = new Date(Date.now());
-        var date =  Math.random()*(10) > 5 ? new Date(projectiondate.setDate(parseInt (datecurrent))) : new Date(projectiondate.setDate(parseInt (datecurrent +1)));
+        var date = Math.random() * (10) > 5 ? new Date(projectiondate.setDate(parseInt(datecurrent))) : new Date(projectiondate.setDate(parseInt(datecurrent + 1)));
         date.setHours(hours[Math.floor(Math.random() * hours.length)])
         date.setMinutes(minutes[Math.floor(Math.random() * minutes.length)]);
         date.setSeconds(00);
         var status = {
-            "response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
+            "name": doctorname,
+            "time" : date
+            //"response": `your appointment is succesfully booked with doctor ${doctorname} who is a specialist in ${doctor} on ${date}`
         }
     }
     console.log(status);
