@@ -81,6 +81,30 @@
                         ]
                     }
                 ]
+            },
+            "Scenario-4": {
+                "case": "Book an appointment with practo",
+                "Conversation": [
+                    {
+                        "QUERY": "I want to book an appointment"
+                    },
+                    {
+                        "bot": "which doctor would you like to consult",
+                        "QUERY": "i would like an appointment with an {doctor} specialist"
+                    },
+                    {
+                        "bot": "could i know your convenient time for your appointment",
+                        "QUERY": "between today and tomorrow / wednesday 3rd anytime between 2pm and 3pm"
+                    }
+                ],
+                "URL": "https://gentle-caverns-27745.herokuapp.com/bookappointment?doctor={doctor}&schedule={schedule}",
+                "InputParams": {
+                    "doctor": "generalphysician/ent/cardiologist",
+                    "schedule": "wednesday 3rd anytime between 2pm and 3pm / between today and tomorrow"
+                },
+                "Sample Output": {
+                    "response": "your appointment is succesfully booked with doctor sharma who is a specialist in ent on Mon Oct 08 2018 12:15:00 GMT+0000 (UTC)"
+                }
             }
         }
     ]
