@@ -103,7 +103,8 @@
                     "schedule": "wednesday 3rd anytime between 2pm and 3pm / between today and tomorrow"
                 },
                 "Sample Output": {
-                    "response": "your appointment is succesfully booked with doctor sharma who is a specialist in ent on Mon Oct 08 2018 12:15:00 GMT+0000 (UTC)"
+                    "name": "sharma",
+                    "time": "2018-10-12T18:30:00.351Z"
                 }
             }
         }
