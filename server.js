@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var url = require('url');
 var fs = require('fs');
+const path = require('path');
 
 // Enable CORS
 let bankingdata = {
@@ -37,6 +38,9 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(express.static(path.join(__dirname, "practo")));
+app.use(express.static(path.join(__dirname, "snapdeal")));
+app.use(express.static(path.join(__dirname, "icici")));
 app.get('/bookappointment', (req, res) => {
     var doctor = req.param("doctor");
     var schedule = req.param("schedule");
